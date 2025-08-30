@@ -413,7 +413,7 @@ This project is licensed under the GPL-2.0-or-later License - see the [LICENSE](
 
 - **Documentation**: [Aetherweb3 Docs](https://docs.aetherweb3.com)
 - **Discord**: [Join our community](https://discord.gg/aetherweb3)
-- **Twitter**: [@Aetherweb3](https://twitter.com/aetherweb3)
+- **Twitter**: [@Aetherweb3X](https://twitter.com/aetherweb3x)
 - **Email**: support@aetherweb3.com
 
 ## 🔄 Version History
