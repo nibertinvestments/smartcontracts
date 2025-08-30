@@ -8,26 +8,81 @@ A comprehensive DeFi ecosystem featuring ERC20 tokens and automated market maker
 
 ## 🌟 Features
 
-### Aetherweb3Token (ERC20)
-- Standard ERC20 implementation with OpenZeppelin
-- 18 decimal places
-- Mintable by deployer
-- Full ERC20 compliance
+### Core Protocol Components
 
-### Aetherweb3Router (V3 Router)
-- **Swap Functionality**: Exact input/output swaps with single and multi-hop support
-- **Liquidity Management**: Add/remove liquidity from pools
-- **Multicall Support**: Batch multiple operations in a single transaction
-- **WETH Integration**: Native ETH support through WETH wrapping/unwrapping
-- **Deadline Protection**: Prevent stale transaction execution
-- **Gas Optimized**: Efficient routing and execution
+#### Aetherweb3Token (ERC20)
+- **Standard ERC20 Implementation**: Full OpenZeppelin ERC20 compliance
+- **18 Decimal Places**: Standard token precision
+- **Owner Minting**: Controlled token supply management
+- **Transfer Restrictions**: Optional compliance features
+- **Pausable**: Emergency stop functionality
 
-### Aetherweb3Oracle (Price Oracle)
-- **Multi-Source Feeds**: Aggregate price data from multiple sources
-- **Confidence Intervals**: Statistical confidence in price feeds
-- **Access Controls**: Owner-controlled price updates
-- **Timestamp Tracking**: Historical price data with timestamps
-- **Emergency Controls**: Circuit breaker functionality
+#### Aetherweb3Factory (Pool Factory)
+- **Deterministic Pool Creation**: CREATE2-based predictable addresses
+- **Pool Registry**: Complete tracking of all liquidity pools
+- **Fee Tier Management**: Configurable trading fees
+- **Access Control**: Owner-controlled pool creation
+- **Gas Optimized**: Efficient pool lookup and creation
+
+#### Aetherweb3Router (V3 Router)
+- **Advanced Swap Functionality**: Exact input/output with multi-hop support
+- **Liquidity Management**: Add/remove liquidity with position tracking
+- **Multicall Support**: Batch operations in single transactions
+- **WETH Integration**: Native ETH support through wrapping
+- **Slippage Protection**: Minimum output amounts and deadlines
+- **Gas Optimized**: Efficient routing algorithms
+
+#### Aetherweb3DAO (Decentralized Governance)
+- **Proposal System**: Token holder proposal creation and voting
+- **Timelock Integration**: Delayed execution for security
+- **Quorum Requirements**: Minimum participation thresholds
+- **Gasless Voting**: Meta-transaction support for voting
+- **Multi-Sig Support**: Emergency cancellation capabilities
+
+### Aetherweb3StakingVault (Token Staking)
+- **Flexible Lock Periods**: Multiple staking durations with rewards
+- **Reward Distribution**: Automated reward calculation and claiming
+- **Emergency Unstaking**: Penalty-based early withdrawal
+- **Lock Multipliers**: Higher rewards for longer commitments
+- **DAO Integration**: Governance-controlled parameters
+
+#### Aetherweb3VaultFactory (Vault Factory)
+- **Dynamic Vault Creation**: Deploy multiple staking vaults with custom parameters
+- **Vault Registry**: Complete tracking of all deployed vaults
+- **Parameter Validation**: Strict validation of vault configurations
+- **Fee System**: Optional creation fees for vault deployment
+- **Batch Deployment**: Create multiple vaults in single transaction
+- **Access Control**: Owner-controlled factory with pausable functionality
+- **Address Prediction**: Predict vault addresses before deployment
+
+#### Aetherweb3Pool (Liquidity Pool)
+- **Constant Product AMM**: x * y = k price determination
+- **Fee Collection**: Configurable fee tiers for different pairs
+- **Flash Swaps**: Gas-efficient arbitrage opportunities
+- **Price Oracle**: Built-in price tracking
+- **Position Management**: Liquidity position tracking
+
+#### Aetherweb3PoolDeployer (Deployment Utility)
+- **Deterministic Deployment**: CREATE2 for predictable addresses
+- **Parameter Management**: Configurable pool parameters
+- **Factory Integration**: Seamless factory coordination
+- **Gas Efficient**: Optimized deployment process
+
+### Security & Safety Features
+
+- **OpenZeppelin Audited**: Battle-tested security components
+- **Reentrancy Protection**: Comprehensive guards against attacks
+- **Input Validation**: Strict parameter validation
+- **Access Control**: Role-based permissions
+- **Emergency Controls**: Pause and circuit breaker functionality
+
+### Developer Experience
+
+- **Comprehensive Documentation**: Detailed guides for all contracts
+- **Type-Safe Interfaces**: Full interface definitions
+- **Utility Libraries**: Mathematical and safety utilities
+- **Extensive Testing**: High test coverage
+- **Deployment Scripts**: Automated deployment process
 
 ## 📋 Prerequisites
 
@@ -131,6 +186,9 @@ contracts/
 ├── Aetherweb3Pool.sol           # Basic Pool Implementation
 ├── Aetherweb3Router.sol         # V3 Router for Swaps & Liquidity
 ├── Aetherweb3Oracle.sol         # Price Oracle Contract
+├── Aetherweb3DAO.sol            # Decentralized Governance
+├── Aetherweb3StakingVault.sol   # Token Staking Vault
+├── Aetherweb3Timelock.sol       # Timelock for Governance
 ├── libraries/
 │   ├── TransferHelper.sol       # Safe Token Transfer Library
 │   └── SafeCast.sol            # Safe Type Casting Library
@@ -139,6 +197,9 @@ contracts/
     ├── IAetherweb3PoolDeployer.sol
     ├── IAetherweb3Router.sol
     ├── IAetherweb3Oracle.sol
+    ├── IAetherweb3DAO.sol
+    ├── IAetherweb3StakingVault.sol
+    ├── IAetherweb3Timelock.sol
     ├── IERC20Minimal.sol
     └── pool/
         ├── IAetherweb3PoolImmutables.sol
@@ -147,9 +208,30 @@ contracts/
         ├── IAetherweb3PoolActions.sol
         ├── IAetherweb3PoolOwnerActions.sol
         └── IAetherweb3PoolEvents.sol
+### Documentation Structure
+
+```
+docs/
+├── contracts/                    # Individual contract documentation
+│   ├── Aetherweb3Token.md       # ERC20 token guide
+│   ├── Aetherweb3Factory.md     # Factory contract guide
+│   ├── Aetherweb3Router.md      # Router contract guide
+│   ├── Aetherweb3Oracle.md      # Oracle contract guide
+│   ├── Aetherweb3Pool.md        # Pool contract guide
+│   └── Aetherweb3PoolDeployer.md # Deployer contract guide
+├── interfaces/                  # Interface documentation
+│   └── README.md               # Complete interface reference
+└── libraries/                  # Library documentation
+    └── README.md               # Utility libraries guide
 ```
 
-### Deployment Flow
+Each contract documentation includes:
+- **Overview**: Purpose and key features
+- **Contract Details**: Constructor parameters and functions
+- **Usage Examples**: Code samples and integration patterns
+- **Deployment**: Step-by-step deployment instructions
+- **Security**: Security considerations and best practices
+- **Integration**: Frontend and contract integration guides
 
 1. **Deploy PoolDeployer** → Returns `POOL_DEPLOYER_ADDRESS`
 2. **Deploy Factory** with `POOL_DEPLOYER_ADDRESS` → Returns `FACTORY_ADDRESS`
@@ -159,7 +241,30 @@ contracts/
 6. **Create Pools** using Factory
 7. **Configure Oracle** with price feeds and access controls
 
-## 📖 Usage Examples
+## � Documentation
+
+### �📖 Detailed Contract Documentation
+
+For comprehensive documentation on each contract, see the detailed guides:
+
+- **[Aetherweb3Token](./docs/contracts/Aetherweb3Token.md)** - Complete ERC20 token implementation guide
+- **[Aetherweb3Factory](./docs/contracts/Aetherweb3Factory.md)** - Pool factory and registry documentation
+- **[Aetherweb3Router](./docs/contracts/Aetherweb3Router.md)** - User-facing swap interface with multicall
+- **[Aetherweb3Oracle](./docs/contracts/Aetherweb3Oracle.md)** - Multi-source price oracle system
+- **[Aetherweb3Pool](./docs/contracts/Aetherweb3Pool.md)** - Core liquidity pool mechanics
+- **[Aetherweb3PoolDeployer](./docs/contracts/Aetherweb3PoolDeployer.md)** - Deterministic pool deployment
+- **[Aetherweb3DAO](./docs/contracts/Aetherweb3DAO.md)** - Decentralized governance system
+- **[Aetherweb3StakingVault](./docs/contracts/Aetherweb3StakingVault.md)** - Token staking with rewards
+- **[Aetherweb3VaultFactory](./docs/contracts/Aetherweb3VaultFactory.md)** - Dynamic vault creation and management
+- **[Aetherweb3Timelock](./docs/contracts/Aetherweb3Timelock.md)** - Timelock for secure execution
+
+### 🔌 Interface Documentation
+
+- **[Interfaces Overview](./docs/interfaces/README.md)** - Complete interface reference and integration guide
+
+### 📚 Library Documentation
+
+- **[Libraries Overview](./docs/libraries/README.md)** - Utility libraries for mathematical operations and safety
 
 ### Creating a Pool
 
