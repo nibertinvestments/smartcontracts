@@ -1,37 +1,84 @@
 {
-  "name": "aetherweb3-smartcontracts",
+  "name": "aetherweb3-token-creator",
   "version": "1.0.0",
-  "description": "Smart contracts for the Aetherweb3 ecosystem",
+  "description": "A comprehensive token creation platform for the Aetherweb3 DeFi ecosystem",
   "main": "index.js",
   "scripts": {
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",
-    "test:gas": "npx hardhat test --gas",
+    "test:gas": "REPORT_GAS=true npx hardhat test",
     "test:coverage": "npx hardhat coverage",
-    "deploy": "npx hardhat run scripts/deploy.js",
-    "deploy:local": "npx hardhat run scripts/deploy.js --network localhost",
-    "deploy:testnet": "npx hardhat run scripts/deploy.js --network sepolia",
-    "deploy:mainnet": "npx hardhat run scripts/deploy.js --network mainnet",
-    "verify": "npx hardhat run scripts/verify.js",
+    "deploy": "npx hardhat run scripts/deploy-token-creator.js",
+    "deploy:mainnet": "npx hardhat run scripts/deploy-token-creator.js --network mainnet",
+    "deploy:sepolia": "npx hardhat run scripts/deploy-token-creator.js --network sepolia",
+    "deploy:polygon": "npx hardhat run scripts/deploy-token-creator.js --network polygon",
+    "deploy:bsc": "npx hardhat run scripts/deploy-token-creator.js --network bsc",
+    "deploy:arbitrum": "npx hardhat run scripts/deploy-token-creator.js --network arbitrum",
+    "deploy:optimism": "npx hardhat run scripts/deploy-token-creator.js --network optimism",
+    "deploy:avalanche": "npx hardhat run scripts/deploy-token-creator.js --network avalanche",
+    "deploy:fantom": "npx hardhat run scripts/deploy-token-creator.js --network fantom",
+    "verify": "npx hardhat run scripts/verify-token-creator.js",
     "estimate-gas": "npx hardhat run scripts/estimate-gas.js",
     "node": "npx hardhat node",
     "clean": "npx hardhat clean",
     "lint": "npx solhint 'contracts/**/*.sol'",
     "lint:fix": "npx solhint 'contracts/**/*.sol' --fix",
     "format": "npx prettier --write 'contracts/**/*.sol' 'test/**/*.js' 'scripts/**/*.js'",
-    "size": "npx hardhat size-contracts"
+    "size": "npx hardhat size-contracts",
+    "console": "npx hardhat console"
   },
+  "keywords": [
+    "ethereum",
+    "smart-contracts",
+    "defi",
+    "token-creator",
+    "erc20",
+    "solidity",
+    "hardhat",
+    "aetherweb3"
+  ],
+  "author": "Aetherweb3",
+  "license": "MIT",
   "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "@nomicfoundation/hardhat-verify": "^2.1.1",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-etherscan": "^3.1.7",
+    "@openzeppelin/contracts": "^5.0.0",
+    "@openzeppelin/hardhat-upgrades": "^2.3.0",
+    "@typechain/ethers-v6": "^0.5.0",
+    "@typechain/hardhat": "^9.0.0",
+    "@types/chai": "^4.3.6",
+    "@types/mocha": "^10.0.2",
+    "@types/node": "^20.8.0",
+    "chai": "^4.3.10",
     "dotenv": "^17.2.1",
+    "ethers": "^6.8.0",
     "hardhat": "^2.19.0",
+    "hardhat-gas-reporter": "^1.0.9",
     "prettier": "^3.1.0",
     "prettier-plugin-solidity": "^1.3.1",
     "solhint": "^4.0.0",
-    "solidity-coverage": "^0.8.5"
+    "solidity-coverage": "^0.8.5",
+    "ts-node": "^10.9.1",
+    "typechain": "^8.3.2",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.0"
-  }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aetherweb3/token-creator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aetherweb3/token-creator/issues"
+  },
+  "homepage": "https://github.com/aetherweb3/token-creator#readme"
 }
