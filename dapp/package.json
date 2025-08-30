@@ -1,0 +1,29 @@
+{
+  "name": "aetherweb3-dapp",
+  "version": "1.0.0",
+  "description": "Aetherweb3 DeFi Ecosystem DApp",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "dev": "live-server --port=3000 --open",
+    "build": "echo 'No build step required for static site'"
+  },
+  "keywords": [
+    "web3",
+    "defi",
+    "blockchain",
+    "ethereum",
+    "aetherweb3"
+  ],
+  "author": "Aetherweb3",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nibertinvestments/smartcontracts.git",
+    "directory": "dapp"
+  },
+  "homepage": "https://aetherweb3.xyz"
+}
